@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Estudiante</title>
+</head>
+<body>
+
+<h1>Formulario de Estudiante</h1>
+
+<a href="/students">Volver</a>
+
+<form th:action="@{/students/save}" th:object="${student}" method="post">
+
+    <input type="hidden" th:field="*{id}">
+
+    <p>
+        <label>Nombre:</label><br>
+        <input type="text" th:field="*{name}">
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    </p>
+
+    <p>
+        <label>Tema de dificultad:</label><br>
+        <input type="text" th:field="*{topic}" placeholder="Matemáticas, Programación, Bases de datos">
+        <span th:if="${#fields.hasErrors('topic')}" th:errors="*{topic}"></span>
+    </p>
+
+    <p>
+        <label>Riesgo académico 1-5:</label><br>
+        <input type="number" th:field="*{academicRisk}" min="1" max="5">
+        <span th:if="${#fields.hasErrors('academicRisk')}" th:errors="*{academicRisk}"></span>
+    </p>
+
+    <p>
+        <label>Prioridad 1-10:</label><br>
+        <input type="number" th:field="*{priority}" min="1" max="10">
+        <span th:if="${#fields.hasErrors('priority')}" th:errors="*{priority}"></span>
+    </p>
+
+    <button type="submit">Guardar</button>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado de Optimización</title>
+</head>
+<body>
+
+<h1>Resultado de Optimización</h1>
+
+<a href="/">Inicio</a>
+
+<p>
+    <strong>Estado:</strong>
+    <span th:text="${response.status}"></span>
+</p>
+
+<p>
+    <strong>Valor objetivo:</strong>
+    <span th:text="${response.objectiveValue}"></span>
+</p>
+
+<h2>Asignaciones recomendadas</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+    <tr>
+        <th>Estudiante</th>
+        <th>Tema</th>
+        <th>Tutor asignado</th>
+        <th>Puntaje</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="assignment : ${assignments}">
+        <td th:text="${assignment.studentName}"></td>
+        <td th:text="${assignment.topic}"></td>
+        <td th:text="${assignment.tutorName}"></td>
+        <td th:text="${assignment.score}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Estudiantes</title>
+</head>
+<body>
+
+<h1>Gestión de Estudiantes</h1>
+
+<a href="/">Inicio</a> |
+<a href="/students/new">Nuevo estudiante</a>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Tema</th>
+        <th>Riesgo académico</th>
+        <th>Prioridad</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${students}">
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.topic}"></td>
+        <td th:text="${student.academicRisk}"></td>
+        <td th:text="${student.priority}"></td>
+        <td>
+            <a th:href="@{/students/edit/{id}(id=${student.id})}">Editar</a>
+            |
+            <a th:href="@{/students/delete/{id}(id=${student.id})}"
+               onclick="return confirm('¿Desea eliminar este estudiante?')">
+                Eliminar
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

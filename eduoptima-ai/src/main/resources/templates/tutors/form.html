@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Tutor</title>
+</head>
+<body>
+
+<h1>Formulario de Tutor</h1>
+
+<a href="/tutors">Volver</a>
+
+<form th:action="@{/tutors/save}" th:object="${tutor}" method="post">
+
+    <input type="hidden" th:field="*{id}">
+
+    <p>
+        <label>Nombre:</label><br>
+        <input type="text" th:field="*{name}">
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    </p>
+
+    <p>
+        <label>Especialidad:</label><br>
+        <input type="text" th:field="*{specialty}" placeholder="Matemáticas, Programación, Bases de datos">
+        <span th:if="${#fields.hasErrors('specialty')}" th:errors="*{specialty}"></span>
+    </p>
+
+    <p>
+        <label>Capacidad máxima:</label><br>
+        <input type="number" th:field="*{maxCapacity}" min="1">
+        <span th:if="${#fields.hasErrors('maxCapacity')}" th:errors="*{maxCapacity}"></span>
+    </p>
+
+    <button type="submit">Guardar</button>
+
+</form>
+
+</body>
+</html>
